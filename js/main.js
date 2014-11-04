@@ -10,3 +10,26 @@ function onlySixes(array){
            item.toString().indexOf('six') !== -1
   });
 }
+
+function productArray(array){
+  return _.reduce(array, function(prev, next){
+    return prev * next;
+  });
+}
+
+function reverseString(string){
+  return string.split('').reverse().join('');
+}
+
+function reverseCharacterAge(array){
+  var sortedArray = _(array)
+    .map(function(item){
+      return reverseString(item.name);
+    })
+    .sortBy()
+    .reverse()
+    .value();
+
+  var first = reverseString(sortedArray[0]);
+  return first + ' is ' + _.where(array, { name: first})[0].age;
+}
